@@ -5,7 +5,7 @@ domains = {
   frontend: 'vagrant.dev',
 }
 config = {
-  local: 'vagrant-local.yml',
+  local: './vagrant/config/vagrant-local.yml',
 }
 
 # read config
@@ -58,9 +58,9 @@ Vagrant.configure(2) do |config|
   config.hostmanager.aliases            = domains.values
 
   # provisioners
-  config.vm.provision 'shell', path: 'once-as-root.sh', args: [options['timezone'], options['user'], options['password'], options['database']]
-  config.vm.provision 'shell', path: 'once-as-vagrant.sh', args: [options['github_token']], privileged: false
-  config.vm.provision 'shell', path: 'always-as-root.sh', run: 'always'
+  config.vm.provision 'shell', path: './vagrant/provision/once-as-root.sh', args: [options['timezone'], options['user'], options['password'], options['database']]
+  config.vm.provision 'shell', path: './vagrant/provision/once-as-vagrant.sh', args: [options['github_token']], privileged: false
+  config.vm.provision 'shell', path: './vagrant/provision/always-as-root.sh', run: 'always'
 
   # post-install message (vagrant console)
   config.vm.post_up_message = "ALL DONE!!!!"
