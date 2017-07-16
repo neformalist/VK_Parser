@@ -1,0 +1,31 @@
+# Your personal GitHub token
+github_token: 590c8f2d4ced09161e466e3433cbb4481d2af4eb
+# Read more: https://github.com/blog/1509-personal-api-tokens
+# You can generate it here: https://github.com/settings/tokens
+
+# Guest OS timezone
+timezone: Europe/Moscow
+
+# Are we need check box updates for every 'vagrant up'?
+box_check_update: false
+
+# Virtual machine name
+machine_name: vagrant-machine
+
+# Virtual machine IP
+ip: 192.168.83.131
+
+# Virtual machine CPU cores number
+cpus: 2
+
+# Virtual machine RAM
+memory: 1024
+
+# User PostgreSql
+user: vagrant
+
+# Password PostgeSql
+password: vagrant
+
+# Name Database
+database: vagrant

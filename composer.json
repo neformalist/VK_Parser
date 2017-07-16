@@ -1,0 +1,21 @@
+{
+    "name": "Develop",
+    "description": "Develop",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.1",
+	"twig/twig": "2.*",
+	"symfony/event-dispatcher" : "3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "DataSource\\": "core/data",
+            "Parser\\": "core"
+        }
+    },
+    "config": {
+        "process-timeout": 1800
+    }
+}
