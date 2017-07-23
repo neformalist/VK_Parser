@@ -23,22 +23,10 @@ class Parser
      */
     private $curl;
 
-    /**
-     * @var int
-     */
-    private $count;
-
-    /**
-     * @var int
-     */
-    private $offset;
-
-    public function __construct(Database $db, Curl $curl, $count = 10, $offset = 0)
+    public function __construct(Database $db, Curl $curl)
     {
         $this->db = $db->getConnection();
         $this->curl = $curl;
-        $this->count = $count;
-        $this->offset = $offset;
     }
 
     /**
@@ -77,24 +65,12 @@ SQL;
         $statement->execute();
     }
 
-    public function run()
+    public function parseUser($offset)
     {
-        $time_start = microtime(true);
-        echo "Progress :          ";
-        $increment = 1;
-        $offset = $this->offset + 1;
-        while ($increment <= $this->count){
-            if($user = $this->curl->getUser($offset)){
-                $this->insert($user);
-                echo "\033[11D";
-                echo str_pad($increment, 5, ' ', STR_PAD_LEFT) . " users";
-                $increment++;
-            }
-            $offset++;
+        if($user = $this->curl->getUser($offset)){
+            $this->insert($user);
+            return true;
         }
-        $time_end = microtime(true);
-        $time = round(($time_end - $time_start), 2);
-
-        echo  " in $time seconds\n";
+        return false;
     }
 }
